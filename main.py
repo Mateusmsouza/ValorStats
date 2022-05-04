@@ -1,5 +1,3 @@
-from typing import Optional
-
 from fastapi import FastAPI
 import uvicorn
 import settings
@@ -14,8 +12,8 @@ def main():
     uvicorn.run(
         "main:app",
         host=settings.SERVICE_HOST,
-        port=settings.SERVICE_PORT,
-        workers=settings.WORKERS_AMOUNT
+        port=int(settings.SERVICE_PORT),
+        workers=int(settings.WORKERS_AMOUNT)
     )
 
 if __name__ == '__main__':
