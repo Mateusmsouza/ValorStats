@@ -17,7 +17,13 @@ jobs:
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
-        pip install pylint
+        pip install -r requirements/production.txt
     - name: Analysing the code with pylint
       run: |
-        pylint $(git ls-files '*.py')
+        pylint $(git ls-files '*.py') | tee lint.txt
+    - name: 'Upload Artifact Lint Output'
+      uses: actions/upload-artifact@v3
+      with:
+        name: lint_output.txt
+        path: lint.txt
+        retention-days: 5
