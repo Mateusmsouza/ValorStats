@@ -1,3 +1,5 @@
 fastapi==0.75.2
 uvicorn==0.17.6
 pylint==2.13.8
+pytest==7.1.2
+pytest-sugar==0.9.4

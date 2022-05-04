@@ -18,12 +18,15 @@ jobs:
       run: |
         python -m pip install --upgrade pip
         pip install -r requirements/development.txt
+        mkdir outputs
     - name: Analysing the code with pylint
       run: |
-        pylint $(git ls-files '*.py') | tee lint.txt
+        pylint $(git ls-files '*.py') | tee outputs/lint.txt
+    - name: Running unit tests
+      run: pytest | tee outputs/unit_tests.txt
     - name: 'Upload Artifact Lint Output'
       uses: actions/upload-artifact@v3
       with:
-        name: lint_output.txt
-        path: lint.txt
+        name: test-and-lint-report
+        path: outputs/
         retention-days: 5
