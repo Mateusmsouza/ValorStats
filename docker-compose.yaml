@@ -1,0 +1,30 @@
+
+version: '3.7'
+services:
+  cache:
+    image: redis:alpine
+    networks:
+      - valor-stats-network
+
+  valor-stats:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    ports:
+      - $SERVICE_PORT:$SERVICE_PORT
+    env_file:
+      - .env
+    networks:
+      - valor-stats-network
+    volumes:
+      - ./:/app
+      - logs:/app/logs
+    restart: on-failure
+    depends_on:
+      - cache
+
+networks:
+  valor-stats-network:
+
+volumes:
+  logs:
