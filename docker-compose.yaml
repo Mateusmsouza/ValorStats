@@ -7,7 +7,9 @@ services:
       - valor-stats-network
 
   valor-stats:
-    build: .
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
     ports:
       - $SERVICE_PORT:$SERVICE_PORT
     env_file:
