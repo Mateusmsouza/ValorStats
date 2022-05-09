@@ -1,7 +1,7 @@
 
 version: '3.7'
 services:
-  redis:
+  cache:
     image: redis:alpine
     networks:
       - valor-stats-network
@@ -18,6 +18,8 @@ services:
       - ./:/app
       - logs:/app/logs
     restart: on-failure
+    depends_on:
+      - cache
 
 networks:
   valor-stats-network:
