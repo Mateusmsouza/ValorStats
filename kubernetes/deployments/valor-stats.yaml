@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: valor-stats-development
+  labels:
+    app: valor-stats
+
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: valor-stats
+  template:
+    metadata:
+      labels:
+        app: valor-stats
+    spec:
+      containers:
+        - name: nginx
+          image: nginx:1.14.2
+          ports:
+          - containerPort: 80
