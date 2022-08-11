@@ -8,7 +8,7 @@ LOGGER = logging.getLogger('sLogger')
 
 class AgentsController:
 
-    def get_agents(self, language: str) -> List[Optional(Dict)]:
+    def get_agents(self, language: str) -> List[Optional[Dict]]:
         try:
             agents = AgentsService().get_agents(language=language)
             LOGGER.info('sucessfully retrieved agents')

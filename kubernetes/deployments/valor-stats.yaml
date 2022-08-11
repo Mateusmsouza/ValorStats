@@ -17,6 +17,7 @@ spec:
     spec:
       containers:
         - name: valor-stats
-          image: valor-stats-local
+          image: valor-stats:latest
+          imagePullPolicy: Never
           ports:
           - containerPort: 8000
